@@ -23,36 +23,44 @@ function init() {
     canvas.addEventListener("mousedown", e => findxy('down', e), false);
     canvas.addEventListener("mouseup", e => findxy('up', e), false);
     canvas.addEventListener("mouseout", e => findxy('out', e), false);
+
+    canvas.ontouchstart = ontouchstartEvent;
+    canvas.ontouchmove = ontouchmoveEvent;
 }
 
-function color(obj) {
-    switch (obj.id) {
-        case "green":
-            x = "green";
-            break;
-        case "blue":
-            x = "blue";
-            break;
-        case "red":
-            x = "red";
-            break;
-        case "yellow":
-            x = "yellow";
-            break;
-        case "orange":
-            x = "orange";
-            break;
-        case "black":
-            x = "black";
-            break;
-        case "white":
-            x = "white";
-            break;
-    }
-    if (x == "white") y = 14;
-    else y = 2;
+// mobile events - start
+function ontouchstartEvent(event) {                   
+    event.preventDefault();                 
+    
+    prevX = event.touches[0].clientX;
+    prevY = event.touches[0].clientY;
 
+    console.log(`start ${prevX} ${prevY}`);
+    dot(prevX, prevY);
 }
+
+function ontouchmoveEvent(event) {
+    event.preventDefault();                 
+
+    currX = event.touches[0].clientX;
+    currY = event.touches[0].clientY
+
+    console.log(`start ${currX} ${currY}`);
+    draw();
+
+    prevX = currX;
+    prevY = currY;
+}
+
+function dot() {
+    ctx.beginPath();
+    ctx.fillStyle = "#000000";
+    ctx.arc(prevX, prevY, 1, 0, Math.PI * 2, true);
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
+}
+// mobile events - end
 
 function draw() {
     ctx.beginPath();
