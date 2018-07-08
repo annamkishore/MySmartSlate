@@ -8,6 +8,8 @@ let canvas, ctx, flag = false,
     currX = 0,
     prevY = 0,
     currY = 0,
+    width = 0,
+    height = 0;
     dot_flag = false;
 
 let x = "green",
@@ -16,8 +18,8 @@ let x = "green",
 function init() {
     canvas = document.getElementById('canvasArea');
     ctx = canvas.getContext("2d");
-    canvas.width = document.body.clientWidth;
-    canvas.height = document.body.clientHeight;
+    canvas.width = width = document.body.clientWidth;
+    canvas.height = height = document.body.clientHeight;
 
     canvas.addEventListener("mousemove", e => findxy('move', e), false);
     canvas.addEventListener("mousedown", e => findxy('down', e), false);
@@ -73,11 +75,8 @@ function draw() {
 }
 
 function erase() {
-    let m = confirm("Want to clear");
-    if (m) {
-        ctx.clearRect(0, 0, w, h);
-        document.getElementById("canvasimg").style.display = "none";
-    }
+    ctx.clearRect(0, 0, width, height);
+    // document.getElementById("canvasimg").style.display = "none";
 }
 
 function save() {
