@@ -18,6 +18,9 @@ class DrawingData {
 
         this.strokeStyle = "green";
         this.lineWidth = 3;
+
+        this.flag = false;
+        this.dot_flag = false;
     }
 
     initCanvas() {
@@ -80,7 +83,7 @@ class DrawingData {
     }
     
     erase() {
-        this.ctx.clearRect(0, 0, width, height);
+        this.ctx.clearRect(0, 0, this.width, this.height);
         // document.getElementById("canvasimg").style.display = "none";
     }
     
@@ -91,21 +94,21 @@ class DrawingData {
             this.currX = e.clientX - this.canvas.offsetLeft;
             this.currY = e.clientY - this.canvas.offsetTop;
     
-            flag = true;
-            dot_flag = true;
-            if (dot_flag) {
+            this.flag = true;
+            this.dot_flag = true;
+            if (this.dot_flag) {
                 this.ctx.beginPath();
                 this.ctx.fillStyle = this.strokeStyle;
                 this.ctx.fillRect(this.currX, this.currY, 2, 2);
                 this.ctx.closePath();
-                dot_flag = false;
+                this.dot_flag = false;
             }
         }
         if (res == 'up' || res == "out") {
-            flag = false;
+            this.flag = false;
         }
         if (res == 'move') {
-            if (flag) {
+            if (this.flag) {
                 this.prevX = this.currX;
                 this.prevY = this.currY;
                 this.currX = e.clientX - this.canvas.offsetLeft;
@@ -117,8 +120,6 @@ class DrawingData {
 }
 
 let drawConfig = new DrawingData();
-let flag = false,
-    dot_flag = false;
 
 window.onload = drawConfig.initCanvas.bind(drawConfig);
 
