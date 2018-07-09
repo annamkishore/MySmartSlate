@@ -27,11 +27,13 @@ class DrawingConfig {
         this.canvas.width = this.width = document.body.clientWidth;
         this.canvas.height = this.height = document.body.clientHeight;
     
+        // desktop events
         this.canvas.addEventListener("mousemove", e => this.findxy('move', e), false);
         this.canvas.addEventListener("mousedown", e => this.findxy('down', e), false);
         this.canvas.addEventListener("mouseup", e => this.findxy('up', e), false);
         this.canvas.addEventListener("mouseout", e => this.findxy('out', e), false);
 
+        // mobile events
         this.canvas.addEventListener("touchstart", e => this.ontouchstartEvent(e), false);
         this.canvas.addEventListener("touchmove", e => this.ontouchmoveEvent(e), false);
     }
@@ -39,12 +41,9 @@ class DrawingConfig {
     // mobile events - start
     ontouchstartEvent(event) {
         event.preventDefault();                 
-        
         this.prevX = event.touches[0].clientX;
         this.prevY = event.touches[0].clientY;
-
-        // console.log(`start ${prevX} ${prevY}`);
-        this.dot(this.prevX, this.prevY);
+        this.dot();
     }
 
     ontouchmoveEvent(event) {
@@ -53,7 +52,6 @@ class DrawingConfig {
         this.currX = event.touches[0].clientX;
         this.currY = event.touches[0].clientY
 
-        // console.log(`start ${currX} ${currY}`);
         this.draw();
 
         this.prevX = this.currX;
