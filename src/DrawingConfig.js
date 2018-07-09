@@ -31,9 +31,9 @@ class DrawingConfig {
         this.canvas.addEventListener("mousedown", e => this.findxy('down', e), false);
         this.canvas.addEventListener("mouseup", e => this.findxy('up', e), false);
         this.canvas.addEventListener("mouseout", e => this.findxy('out', e), false);
-    
-        this.canvas.ontouchstart = e => this.ontouchstartEvent(e);
-        this.canvas.ontouchmove = e => this.ontouchmoveEvent(e);
+
+        this.canvas.addEventListener("touchstart", e => this.ontouchstartEvent(e), false);
+        this.canvas.addEventListener("touchmove", e => this.ontouchmoveEvent(e), false);
     }
 
     // mobile events - start
