@@ -17,8 +17,8 @@ class DrawingConfig {
         this.strokeStyle = "green";
         this.lineWidth = 3;
 
-        this.flag = false;
-        this.dot_flag = false;
+        this.isDrawable = false;
+        this.isDotDrawable = false;
     }
 
     initCanvas() {
@@ -86,33 +86,35 @@ class DrawingConfig {
     }
     
     findxy(res, e) {
-        if (res == 'down') {
-            this.prevX = this.currX;
-            this.prevY = this.currY;
-            this.currX = e.clientX - this.canvas.offsetLeft;
-            this.currY = e.clientY - this.canvas.offsetTop;
-    
-            this.flag = true;
-            this.dot_flag = true;
-            if (this.dot_flag) {
-                this.ctx.beginPath();
-                this.ctx.fillStyle = this.strokeStyle;
-                this.ctx.fillRect(this.currX, this.currY, 2, 2);
-                this.ctx.closePath();
-                this.dot_flag = false;
-            }
-        }
-        if (res == 'up' || res == "out") {
-            this.flag = false;
-        }
-        if (res == 'move') {
-            if (this.flag) {
+        switch(res){
+            case 'down':
                 this.prevX = this.currX;
                 this.prevY = this.currY;
                 this.currX = e.clientX - this.canvas.offsetLeft;
                 this.currY = e.clientY - this.canvas.offsetTop;
-                this.draw();
-            }
+        
+                this.isDrawable = true;
+                this.isDotDrawable = true;
+                if (this.isDotDrawable) {
+                    this.ctx.beginPath();
+                    this.ctx.fillStyle = this.strokeStyle;
+                    this.ctx.fillRect(this.currX, this.currY, 2, 2);
+                    this.ctx.closePath();
+                    this.isDotDrawable = false;
+                }
+                break;
+            case 'up': 
+            case "out":
+                this.isDrawable = false;
+                break;
+            case 'move':
+                if (this.isDrawable) {
+                    this.prevX = this.currX;
+                    this.prevY = this.currY;
+                    this.currX = e.clientX - this.canvas.offsetLeft;
+                    this.currY = e.clientY - this.canvas.offsetTop;
+                    this.draw();
+                }
         }
     }
 }
