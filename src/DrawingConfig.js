@@ -28,25 +28,25 @@ class DrawingConfig {
         this.canvas.height = this.height = document.body.clientHeight;
     
         // desktop events
-        this.canvas.addEventListener("mousemove", e => this.findxy('move', e), false);
-        this.canvas.addEventListener("mousedown", e => this.findxy('down', e), false);
-        this.canvas.addEventListener("mouseup", e => this.findxy('up', e), false);
-        this.canvas.addEventListener("mouseout", e => this.findxy('out', e), false);
+        this.canvas.addEventListener("mousemove", e => this.listenMouseEvents('move', e), false);
+        this.canvas.addEventListener("mousedown", e => this.listenMouseEvents('down', e), false);
+        this.canvas.addEventListener("mouseup", e => this.listenMouseEvents('up', e), false);
+        this.canvas.addEventListener("mouseout", e => this.listenMouseEvents('out', e), false);
 
         // mobile events
-        this.canvas.addEventListener("touchstart", e => this.ontouchstartEvent(e), false);
-        this.canvas.addEventListener("touchmove", e => this.ontouchmoveEvent(e), false);
+        this.canvas.addEventListener("touchstart", e => this.listenTouchStart(e), false);
+        this.canvas.addEventListener("touchmove", e => this.listenTouchMove(e), false);
     }
 
     // mobile events - start
-    ontouchstartEvent(event) {
+    listenTouchStart(event) {
         event.preventDefault();                 
         this.prevX = event.touches[0].clientX;
         this.prevY = event.touches[0].clientY;
         this.dot();
     }
 
-    ontouchmoveEvent(event) {
+    listenTouchMove(event) {
         event.preventDefault();                 
 
         this.currX = event.touches[0].clientX;
@@ -83,7 +83,7 @@ class DrawingConfig {
         // document.getElementById("canvasimg").style.display = "none";
     }
     
-    findxy(res, e) {
+    listenMouseEvents(res, e) {
         switch(res){
             case 'down':
                 this.prevX = this.currX;
