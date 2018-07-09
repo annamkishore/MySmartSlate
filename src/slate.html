@@ -24,9 +24,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
     <canvas id="canvasArea"></canvas>
-    <button id="clearButton" 
-            style="position: fixed; bottom: 0px; right: 0px; 
-                margin-right: 1rem; margin-bottom: 1rem; 
-                width: 10rem; height: 4rem; font-size: 3rem">clear</button>
+    <div style="position: fixed; bottom: 0px; right: 0px; margin-right: 1rem; margin-bottom: 1rem;">
+      <input type="color" id="bgColor" style="width: 4rem; height: 3rem; margin: 0px; padding: 0px" class="btn"/>
+      <input type="color" id="fgColor" style="width: 4rem; height: 3rem; margin: 0px; padding: 0px" class="btn"/>
+      <button id="clearButton" style="width: 4rem; height: 3rem;" class="btn btn-primary">clear</button>
+    </div>
 </body>
 </html>

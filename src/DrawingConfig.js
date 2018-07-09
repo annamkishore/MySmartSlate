@@ -14,11 +14,20 @@ class DrawingConfig {
         this.width = 0;
         this.height = 0;
 
-        this.strokeStyle = "green";
+        this.strokeStyle = this.fgColor;
         this.lineWidth = 3;
 
         this.isDrawable = false;
         this.isDotDrawable = false;
+    }
+
+    setBgColor(color) {
+        this.ctx.fillStyle = color;
+        this.ctx.fillRect(0, 0, this.width, this.height);
+    }
+
+    setFgColor(color) {
+        this.strokeStyle = color;
     }
 
     initCanvas() {
