@@ -8,7 +8,7 @@ window.onload = () => {
 }
 
 window.onresize = () => {
-    drawConfig.canvas.width = drawConfig.width = screen.width;
-    drawConfig.canvas.height = drawConfig.height = screen.height;
+    drawConfig.canvas.width = drawConfig.width = window.innerWidth;
+    drawConfig.canvas.height = drawConfig.height = window.innerHeight;
     drawConfig.setBgColor(bgColorButton.value);
 }
