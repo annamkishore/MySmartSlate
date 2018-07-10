@@ -9,7 +9,7 @@
 
     <title>Cloud Slate</title>
     <!-- uncomment for development -->
-    <script defer src="../bundle.js"></script>
+    <!-- <script defer src="../bundle.js"></script> -->
 
     <!-- for plain loading -->
     <script defer src="./DrawingConfig.js"></script>
@@ -25,6 +25,7 @@
 
     <canvas id="canvasArea"></canvas>
     <div style="position: fixed; bottom: 0px; right: 0px; margin-right: 1rem; margin-bottom: 1rem;">
+      <input type="range" id="range1" min="1" max="50" value="5" />
       <input type="color" id="bgColorButton" style="width: 4rem; height: 3rem; margin: 0px; padding: 0px" class="btn"/>
       <input type="color" id="fgColorButton" style="width: 4rem; height: 3rem; margin: 0px; padding: 0px" class="btn"/>
       <button id="clearButton" style="width: 4rem; height: 3rem;" class="btn btn-primary">clear</button>

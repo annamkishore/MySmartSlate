@@ -11,3 +11,7 @@ bgColorButton.onchange = () => {
 fgColorButton.onchange = () => {
     drawConfig.setFgColor(fgColorButton.value);
 }
+
+range1.onchange = () => {
+    drawConfig.setLineWidth(range1.value);
+}

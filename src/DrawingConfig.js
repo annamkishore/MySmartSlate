@@ -14,7 +14,7 @@ class DrawingConfig {
         this.width = 0;
         this.height = 0;
 
-        this.strokeStyle = this.fgColor;
+        this.strokeStyle = "white";
         this.lineWidth = 3;
 
         this.isDrawable = false;
@@ -28,6 +28,10 @@ class DrawingConfig {
 
     setFgColor(color) {
         this.strokeStyle = color;
+    }
+
+    setLineWidth(lineWidth) {
+        this.lineWidth = lineWidth;
     }
 
     initCanvas() {
