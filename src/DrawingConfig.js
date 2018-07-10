@@ -87,6 +87,9 @@ class DrawingConfig {
         this.ctx.lineTo(this.currX, this.currY);
         this.ctx.strokeStyle = this.strokeStyle;
         this.ctx.lineWidth = this.lineWidth;
+        this.ctx.lineJoin = this.ctx.lineCap = 'round';     // smooth connections // http://perfectionkills.com/exploring-canvas-drawing-techniques/
+        // this.ctx.shadowBlur  = 10;                          // edge smoothing with shadows
+        // this.ctx.shadowColor = 'rgb(0, 0, 0)';
         this.ctx.stroke();
         this.ctx.closePath();
     }
