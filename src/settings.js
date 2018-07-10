@@ -15,3 +15,11 @@ fgColorButton.onchange = () => {
 range1.onchange = () => {
     drawConfig.setLineWidth(range1.value);
 }
+
+fullscreenButton.onchange = e => {
+    if(fullscreenButton.checked) {
+        document.body.webkitRequestFullScreen(document.body);
+    }else {
+        document.webkitExitFullscreen();
+    }
+}
