@@ -133,12 +133,6 @@ class DrawingConfig {
     }
 }
 
-// todo: unused for now
-window.onresize = () => {
-    // canvas.width = window.innerWidth;
-    // canvas.height = window.innerHeight;
-}
-
 function save() {
     document.getElementById("canvasimg").style.border = "2px solid";
     let dataURL = canvas.toDataURL();
