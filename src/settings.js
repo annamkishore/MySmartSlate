@@ -1,13 +1,13 @@
 
 // accessing main.js variables here
 clearButton.onclick = () => {
-    drawConfig.erase();
+    drawConfig.setBgColor(bgColorButton.value);
 }
 
-bgColor.onchange = () => {
-    drawConfig.setBgColor(bgColor.value);
+bgColorButton.onchange = () => {
+    drawConfig.setBgColor(bgColorButton.value);
 }
 
-fgColor.onchange = () => {
-    drawConfig.setFgColor(fgColor.value);
+fgColorButton.onchange = () => {
+    drawConfig.setFgColor(fgColorButton.value);
 }
